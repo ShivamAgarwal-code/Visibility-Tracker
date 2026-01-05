@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: visibility-tracker-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: visibility_user
+      POSTGRES_PASSWORD: visibility_password
+      POSTGRES_DB: visibility_tracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U visibility_user -d visibility_tracker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+
