@@ -1,42 +1,54 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# 1. Dependencies
 /node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+/.pnpm-debug.log*
 
-# testing
-/coverage
-
-# next.js
+# 2. Next.js Build Outputs
 /.next/
 /out/
-
-# production
 /build
+/dist
 
-# misc
-.DS_Store
-*.pem
 
-# debug
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.bak
+
+# 4. Prisma
+
+/prisma/*.db
+/prisma/*.db-journal
+# Migration logs
+/prisma/migrations/migration_lock.toml
+
+# 5. Playwright (Bonus Script Results)
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# 6. Logs & Debugging
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+logs
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
-credentials/credentials.json
+# 7. OS & Editor Specific
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# vercel
-.vercel
-
-# typescript
+# 8. TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
